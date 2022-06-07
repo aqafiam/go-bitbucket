@@ -215,34 +215,26 @@ type RepositoryRefOptions struct {
 	BranchFlg bool
 }
 
+type RepositoryRefTarget struct {
+	Hash string `json:"hash"`
+}
+
 type RepositoryBranchOptions struct {
-	Owner      string `json:"owner"`
-	RepoSlug   string `json:"repo_slug"`
-	Query      string `json:"query"`
-	Sort       string `json:"sort"`
-	PageNum    int    `json:"page"`
-	Pagelen    int    `json:"pagelen"`
-	MaxDepth   int    `json:"max_depth"`
-	BranchName string `json:"branch_name"`
+	Owner    string `json:"owner"`
+	RepoSlug string `json:"repo_slug"`
+	Query    string `json:"query"`
+	Sort     string `json:"sort"`
+	PageNum  int    `json:"page"`
+	Pagelen  int    `json:"pagelen"`
+	MaxDepth int    `json:"max_depth"`
+	Name     string `json:"name"`
 }
 
 type RepositoryBranchCreationOptions struct {
-	Owner    string                 `json:"owner"`
-	RepoSlug string                 `json:"repo_slug"`
-	Name     string                 `json:"name"`
-	Target   RepositoryBranchTarget `json:"target"`
-}
-
-type RepositoryBranchDeleteOptions struct {
-	Owner    string `json:"owner"`
-	RepoSlug string `json:"repo_slug"`
-	RepoUUID string `json:"uuid"`
-	RefName  string `json:"name"`
-	RefUUID  string `json:uuid`
-}
-
-type RepositoryBranchTarget struct {
-	Hash string `json:"hash"`
+	Owner    string              `json:"owner"`
+	RepoSlug string              `json:"repo_slug"`
+	Name     string              `json:"name"`
+	Target   RepositoryRefTarget `json:"target"`
 }
 
 type RepositoryTagOptions struct {
@@ -253,17 +245,14 @@ type RepositoryTagOptions struct {
 	PageNum  int    `json:"page"`
 	Pagelen  int    `json:"pagelen"`
 	MaxDepth int    `json:"max_depth"`
+	Name     string `json:"name"`
 }
 
 type RepositoryTagCreationOptions struct {
 	Owner    string              `json:"owner"`
 	RepoSlug string              `json:"repo_slug"`
 	Name     string              `json:"name"`
-	Target   RepositoryTagTarget `json:"target"`
-}
-
-type RepositoryTagTarget struct {
-	Hash string `json:"hash"`
+	Target   RepositoryRefTarget `json:"target"`
 }
 
 type PullRequestsOptions struct {
